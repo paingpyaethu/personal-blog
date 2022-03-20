@@ -1,0 +1,344 @@
+/*---------- || Fonts || ----------*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+
+
+:root {
+    --nav-color: #351745;
+    --color-1: #46c3db;
+    --color-2: #f3f169;
+    --color-3: #e928be;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none !important;
+    text-decoration: none !important;
+    font-family: 'Nunito', sans-serif;
+}
+
+/*---------------
+ Custom Scrollbar
+----------------*/
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background-color: #1B1B22;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-2);
+}
+
+a {
+    color: var(--color-1);
+    transition: 0.5s;
+}
+ul,li {
+    list-style: none;
+    padding: 0;
+}
+p {
+    margin: 0;
+}
+
+
+
+/*---------- || Navbar || ----------*/
+.site-nav {
+    /*top: 0;*/
+    /*width: 100%;*/
+    /*z-index: 50;*/
+    background-color: #2e2e4c;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+/*.site-nav-scroll {*/
+/*    position: fixed;*/
+/*    background-color: #2e2e4c !important;*/
+/*    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;*/
+/*}*/
+.navbar {
+    padding: 0;
+}
+.navbar .nav-item {
+    margin: auto;
+    padding: 5px 15px;
+}
+.navbar .nav-item .nav-link {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--color-1);
+    padding: 8px 0;
+    position: relative;
+    transition: 0.5s;
+}
+
+.navbar .nav-item .nav-link.active {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.nav-link::before, .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-2);
+    left: 0;
+    transform: scaleX(0);
+    transition: all 0.5s;
+}
+
+.nav-link::before {
+    top: 0;
+    transform-origin: left;
+}
+
+.nav-link::after {
+    bottom: 0;
+    transform-origin: right;
+}
+.nav-link.active::before, .nav-link.active::after, .nav-link:hover::before, .nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+.blog-menu {
+    position: relative;
+}
+.blog-menu a {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+.blog-menu a:hover {
+    color: rgba(255, 255, 255, 0.75);
+}
+.blog-menu-toggle::after {
+    display: inline-block;
+    font-size: 1.125rem;
+    margin-left: 0.255em;
+    vertical-align: middle;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+.blog-menu-inner {
+    position: absolute;
+    z-index: 99999;
+    left: 9%;
+    width: 82%;
+    padding: 20px 10px;
+    margin: 0;
+    background-color: var(--nav-color);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+    display: none;
+    overflow: hidden;
+}
+.blog-menu-inner .blog-item {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+}
+
+.blog-menu-inner .blog-content {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+}
+
+.blog-content .post-image-warp {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+}
+.blog-content .post-image-link {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+.blog-content:hover .post-image-link {
+    background-color: rgba(155,155,155,0.07);
+    color: transparent!important;
+    opacity: 0.8;
+}
+.post-thumbnail {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 5px;
+    transition: opacity .17s ease;
+}
+.blog-content .post-title {
+    position: relative;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5em;
+    text-align: center;
+    margin: 7px 0 5px;
+    letter-spacing: 0.4px;
+}
+.blog-content .post-title a {
+    color: var(--color-2);
+    transition: 0.5s;
+}
+.blog-content:hover .post-title a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-tag {
+    position: absolute;
+    z-index: 5;
+    color: var(--color-1);
+    background-color: rgba(55, 23, 90, 0.75);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    padding: 5px 10px;
+    font-size: 12px;
+    display: block;
+    width: fit-content;
+}
+
+.blog-content .post-meta {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    font-size: 12px;
+}
+/*---------- || Banner || ----------*/
+.banner {
+    position: relative;
+}
+.banner-caption {
+    position: absolute;
+    right: 15%;
+    left: 15%;
+    bottom: 1.25rem;
+    text-align: center;
+}
+.banner-caption h6{
+    color: var(--color-3);
+}
+.banner img{
+    opacity: 0.8;
+}
+
+/*---------- || Projects || ----------*/
+
+/*--------------------
+|| Latest Post - Left
+----------------------*/
+.left {
+    position: sticky;
+    top: 40px;
+}
+.left .latest-post {
+    background-color: #f3f169;
+    color: #161616;
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    border-radius: 0.25rem;
+    padding: 8px 0;
+    margin: 0;
+}
+
+.left-projects .latest-projects img,.title{
+    transition: 0.3s;
+}
+.latest-projects:hover a img{
+    opacity: 0.8;
+}
+.left-projects .latest-projects:hover .title{
+    color: var(--color-3);
+}
+
+.left-projects .latest-projects p{
+    font-size: 12px;
+}
+
+/*--------------------
+||  Middle
+----------------------*/
+.middle .project-img {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.middle .project-title a h4 {
+    transition: 0.3s;
+}
+.middle .project-title a h4:hover {
+    color: var(--color-3);
+}
+
+.middle .project-title p {
+    font-size: 12px;
+}
+
+.middle .project-categories .category-heading-line {
+    width: 32px;
+    height: 5px;
+    background-color: var(--color-3);
+    margin: 0 auto;
+}
+
+/*--------------------
+||  Right
+----------------------*/
+.right {
+    position: sticky;
+    top: 40px;
+}
+.right .about-me-title {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.right .about-me-heading-line::before {
+    content: '';
+    width: 120px;
+    height: 2px;
+    display: block;
+    background-color: var(--color-3);
+    margin: 0 auto;
+}
+
+.right .about-me-heading-line::after {
+    content: '';
+    width: 32px;
+    height: 5px;
+    display: block;
+    background-color: var(--color-3);
+    margin: 0 auto;
+}
+
+.right .my-img img{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+/*---------- || All Blog Posts || ----------*/
+
+.single-blog .breadcrumb {
+    font-size: 14px;
+}
+.single-blog .single-post-title {
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    margin: 2rem 0 1rem 0;
+}
+
+.single-blog .single-post-description {
+    margin-top: 1rem;
+    color: #5c5c62;
+}
