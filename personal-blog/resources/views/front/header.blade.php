@@ -10,9 +10,9 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-         <ul class="navbar-nav ms-auto">
+         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-               <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="#">Home</a>
+               <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('welcome.index') }}">Home</a>
             </li>
             <li class="nav-item blog-menu">
                <a class="blog-menu-toggle" href="javascript:void(0)" id="blogMenuToggle" role="button">
@@ -26,6 +26,16 @@
                <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="#">Contact</a>
             </li>
          </ul>
+
+         <div class="d-flex align-items-center">
+            <a href="">
+               <button class="btn btn-success me-2">Login</button>
+            </a>
+            <a href="">
+               <button class="btn btn-outline-warning">Register</button>
+            </a>
+         </div>
+
       </div>
    </div>
 </nav>

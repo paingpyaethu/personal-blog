@@ -33,7 +33,9 @@
          @include('front.left-sidebar')
       </div>
 
-      @yield('content')
+      <div class="col-12 col-md-6">
+         @yield('content')
+      </div>
 
       <div class="col-12 col-md-4">
          @include('front.right-sidebar')
