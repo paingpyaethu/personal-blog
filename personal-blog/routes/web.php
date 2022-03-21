@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+// Admin View
+Route::get('/dashboard',[AdminDashboardController::class,'dashboard'])->middleware(['auth']);
 
-Route::get('/',[WelcomeController::class,'index']);
+Route::resource('categories',CategoryController::class);
+
+// Front View
+Route::get('/',[WelcomeController::class,'index'])->name('welcome.index');
+
+
 
 //Route::get('/blogs',[BlogController::class,'index'])->name('blogs.index');
 Route::get('/blogs/single-blog-post',[BlogController::class,'show'])->name('blogs.show');
+
+//Route::get('/admin/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth'])->name('admin.dashboard');
+
+require __DIR__.'/auth.php';
