@@ -21,9 +21,6 @@
                      </button>
                   </a>
                </h4>
-               <h4>
-
-               </h4>
                <hr>
 
                @if(session('success'))

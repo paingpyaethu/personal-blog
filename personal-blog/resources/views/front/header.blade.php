@@ -26,15 +26,57 @@
                <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="#">Contact</a>
             </li>
          </ul>
-
-         <div class="d-flex align-items-center">
-            <a href="">
-               <button class="btn btn-success me-2">Login</button>
-            </a>
-            <a href="">
-               <button class="btn btn-outline-warning">Register</button>
-            </a>
-         </div>
+      @if(\Illuminate\Support\Facades\Auth::check())
+         @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+               <div class="dropdown user-info">
+                  <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                     <img src="{{ asset('images/about-me/my-img.png') }}" class="user-img shadow-sm me-2" alt="">
+                     {{ strtoupper(Auth::user()->name) }}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <!-- Authentication -->
+                     <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Go To Dashboard</a></li>
+                        <li>
+                           <a class="dropdown-item" href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                         this.closest('form').submit();">
+                              Logout
+                           </a>
+                        </li>
+                     </form>
+                  </div>
+               </div>
+            @else
+               <div class="dropdown user-info">
+                  <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                     <img src="{{ asset('images/about-me/my-img.png') }}" class="user-img shadow-sm me-2" alt="">
+                     {{ strtoupper(Auth::user()->name) }}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <!-- Authentication -->
+                     <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                         this.closest('form').submit();">
+                           Logout
+                        </a>
+                     </form>
+                  </div>
+               </div>
+         @endif
+      @else
+            <div class="d-flex align-items-center">
+               <a href="{{ route('login') }}">
+                  <button class="btn btn-success me-2">Login</button>
+               </a>
+               <a href="{{ route('register') }}">
+                  <button class="btn btn-outline-warning">Register</button>
+               </a>
+            </div>
+      @endif
 
       </div>
    </div>

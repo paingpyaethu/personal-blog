@@ -8,7 +8,7 @@
    <div class="card shadow">
       <div class="card-body">
          <div class="category-header">
-            <h4 class="mb-0">
+            <h4 class="mb-0 fw-bold">
                <i class="fas fa-layer-group"></i>
                Category Manager
             </h4>
