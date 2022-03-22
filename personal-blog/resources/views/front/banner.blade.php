@@ -1,5 +1,3 @@
-@extends('front.layout')
-
 @section('banner')
 
 <!---------- Banner Page ------------>

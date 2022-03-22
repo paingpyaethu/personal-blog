@@ -1,5 +1,7 @@
 @extends('front.layout')
 
+@include('front.banner')
+
 @section('content')
    <div class="middle mb-5">
       <div class="project-img">

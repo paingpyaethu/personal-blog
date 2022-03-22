@@ -20,7 +20,7 @@
                </a>
             </li>
             <li class="nav-item">
-               <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="#">About</a>
+               <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="{{ route('welcome.about') }}">About</a>
             </li>
             <li class="nav-item">
                <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="#">Contact</a>

@@ -25,7 +25,8 @@
             @csrf
             <div class="col-md-6">
                <label for="Name" class="form-label">Name</label>
-               <input type="text" class="form-control" id="Name" name="name"
+               <input type="text" class="form-control"
+                      id="Name" name="name"
                       value="{{ old('name',$editUser->name) }}">
             </div>
             <div class="col-md-6">
