@@ -360,3 +360,143 @@ p {
     margin-top: 1rem;
     color: #5c5c62;
 }
+
+/*---------- || About - Edu & Exp Section || ----------*/
+
+.exp-edu-title, .skills-header {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.exp-edu-heading-line::before, .skills-heading-line::before {
+    content: '';
+    width: 220px;
+    height: 2px;
+    display: block;
+    background-color: var(--color-3);
+    margin: 0 auto;
+}
+
+.exp-edu-heading-line::after, .skills-heading-line::after {
+    content: '';
+    width: 32px;
+    height: 5px;
+    display: block;
+    background-color: var(--color-3);
+    margin: 0 auto;
+}
+
+.edu-title {
+    background: var(--color-1);
+    border-radius: 20px;
+    padding: 0 15px 0 15px;
+    margin-right: 10px;
+}
+.edu-title .edu-title-1 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.edu-title-2 {
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+.degree h4 {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 900;
+    margin-top: 1rem;
+    margin-left: 30px;
+    letter-spacing: 2px;
+    color: var(--color-3);
+}
+.degree .project-title {
+    margin-left: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.degree .project-title img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.degree .project-title p span {
+    color: var(--color-3);
+    margin-left: 10px;
+}
+
+.degree .project-description {
+    margin: 10px 0 0 49px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #5c5c62;
+}
+
+/*---------- ||  About - Skills Section || ----------*/
+.skills-heading-line::before {
+    width: 100px;
+}
+
+.skills {
+    margin-bottom: 10px;
+}
+
+.skills .progress {
+    background: #342f39;
+    height: 10px;
+}
+.progress .progress-bar {
+    width: 0;
+    border-radius: 0.25rem;
+    transition: 2s;
+}
+.skills .progress .html-color-bar {
+    background: #FF5733;
+}
+.skills .progress .css-color-bar {
+    background: #2188EF;
+}
+.skills .progress .js-color-bar {
+    background: #F9E906;
+}
+.skills .progress .ajax-color-bar {
+    background: #25A206;
+}
+.skills .progress .php-color-bar {
+    background: #8993BE;
+}
+.skills .progress .sql-color-bar {
+    background: #F29111;
+}
+.skills .progress .laravel-color-bar {
+    background: #F05340;
+}
+.skills .progress .vue-color-bar {
+    background: #199859;
+}
+.skills .progress .bs-color-bar {
+    background: #6A11DF;
+}
+.skills .progress .cm-color-bar {
+    background: #F124E3;
+}
+.skills .progress .tw-color-bar {
+    background: #21EF81;
+}
+.skills .progress .pm-color-bar {
+    background: #06F9E0;
+}
+.skills .progress .cre-color-bar {
+    background: #CE390B;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

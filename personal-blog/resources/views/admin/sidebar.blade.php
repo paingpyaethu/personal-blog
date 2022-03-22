@@ -1,5 +1,5 @@
 <!---------- Sidebar ---------->
-<div class="app-sidebar sidebar-shadow">
+<div class="app-sidebar sidebar-shadow d-none d-lg-block">
    <div class="scrollbar-sidebar">
       <div class="app-sidebar__inner">
          <ul class="vertical-nav-menu">
@@ -20,6 +20,17 @@
                </a>
             </li>
             <li class="menu-spacer"></li>
+
+            <li class="menu-title">Menu</li>
+            <li class="menu-item">
+               <a href="{{ route('skills.index') }}"
+                  class="nav-menu-link {{ request()->is('admin/skills*') ? 'active' : '' }}">
+                  <span>
+                     <i class="fas fa-book-journal-whills me-1"></i>
+                     Skills
+                  </span>
+               </a>
+            </li>
 
             <li class="menu-title">Setting</li>
             <li class="menu-item">
