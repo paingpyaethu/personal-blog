@@ -221,6 +221,17 @@ p {
     height: 50px;
     border-radius: 50%;
 }
+.user-info a {
+    font-weight: 500;
+}
+.user-info a:hover {
+    color: rgba(255, 255, 255, 0.75);
+}
+.user-info .dropdown-item:hover {
+    background-color: #c1132d;
+    color: var(--color-2);
+}
+
 
 /*---------- || Banner || ----------*/
 .banner {

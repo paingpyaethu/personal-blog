@@ -4,10 +4,18 @@
       <div class="app-sidebar__inner">
          <ul class="vertical-nav-menu">
             <li class="menu-item mt-3">
-               <a href="{{ url('/dashboard') }}" class="nav-menu-link {{ request()->is('dashboard') ? 'active' : '' }}">
+               <a href="{{ route('admin.dashboard') }}" class="nav-menu-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                   <span>
-                     <i class="fas fa-home"></i>
+                     <i class="fas fa-home me-1"></i>
                      Dashboard
+                  </span>
+               </a>
+            </li>
+            <li class="menu-item mt-3">
+               <a href="{{ url('/') }}" class="nav-menu-link">
+                  <span>
+                     <i class="fas fa-blog me-1"></i>
+                     Go To Blog
                   </span>
                </a>
             </li>
@@ -16,10 +24,19 @@
             <li class="menu-title">Setting</li>
             <li class="menu-item">
                <a href="{{ route('categories.index') }}"
-                  class="nav-menu-link {{ request()->is('categories') ? 'active' : '' }}">
+                  class="nav-menu-link {{ request()->is('admin/categories*') ? 'active' : '' }}">
                   <span>
-                     <i class="fas fa-layer-group"></i>
+                     <i class="fas fa-layer-group me-1"></i>
                      Category Manager
+                  </span>
+               </a>
+            </li>
+            <li class="menu-item">
+               <a href="{{ route('users.index') }}"
+                  class="nav-menu-link {{ request()->is('admin/users*') ? 'active' : '' }}">
+                  <span>
+                     <i class="fas fa-users me-1"></i>
+                     User Manager
                   </span>
                </a>
             </li>

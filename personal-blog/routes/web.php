@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\WelcomeController;
@@ -18,9 +19,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Admin View
-Route::get('/dashboard',[AdminDashboardController::class,'dashboard'])->middleware(['auth']);
+Route::group(['prefix'=>'admin', 'middleware'=>['auth','isAdmin']], function (){
+   Route::get('/dashboard',[AdminDashboardController::class,'dashboard'])->name('admin.dashboard');
 
-Route::resource('categories',CategoryController::class);
+   Route::get('/users',[UserController::class, 'index'])->name('users.index');
+   Route::get('/users/{id}/edit',[UserController::class, 'edit'])->name('users.edit');
+   Route::post('/users/{id}/update',[UserController::class, 'update'])->name('users.update');
+   Route::get('/users/{id}/delete',[UserController::class, 'destroy'])->name('users.destroy');
+
+   Route::resource('categories',CategoryController::class);
+
+});
+
+
 
 // Front View
 Route::get('/',[WelcomeController::class,'index'])->name('welcome.index');
