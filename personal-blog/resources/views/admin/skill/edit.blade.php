@@ -8,9 +8,17 @@
       <div class="card shadow">
          <div class="card-body">
             <div class="category-header">
-               <h4 class="mb-0 fw-bold">
-                  <i class="fas fa-book-journal-whills"></i>
-                  Manage Skills
+               <h4 class="mb-0 d-flex justify-content-between align-items-center">
+                  <div class="fw-bold">
+                     <i class="fas fa-book-journal-whills"></i>
+                     Manage Skills
+                  </div>
+
+                  <a href="{{ route('skills.index') }}">
+                     <button class="btn btn-outline-secondary">
+                        <i class="fas fa-list"></i>
+                     </button>
+                  </a>
                </h4>
                <hr>
                @if(session('success'))

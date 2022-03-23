@@ -23,11 +23,29 @@
 
             <li class="menu-title">Menu</li>
             <li class="menu-item">
+               <a href="{{ route('abouts.index') }}"
+                  class="nav-menu-link {{ request()->is('admin/abouts*') ? 'active' : '' }}">
+                  <span>
+                     <i class="fas fa-user me-1"></i>
+                     About
+                  </span>
+               </a>
+            </li>
+            <li class="menu-item">
                <a href="{{ route('skills.index') }}"
                   class="nav-menu-link {{ request()->is('admin/skills*') ? 'active' : '' }}">
                   <span>
                      <i class="fas fa-book-journal-whills me-1"></i>
                      Skills
+                  </span>
+               </a>
+            </li>
+            <li class="menu-item">
+               <a href="{{ route('edu-exps.index') }}"
+                  class="nav-menu-link {{ request()->is('admin/edu-exps*') ? 'active' : '' }}">
+                  <span>
+                     <i class="fas fa-graduation-cap me-1"></i>
+                     Edu & Exp
                   </span>
                </a>
             </li>
