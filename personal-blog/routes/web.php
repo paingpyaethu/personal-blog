@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\EduExpController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
@@ -30,8 +32,13 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','isAdmin']], function (){
    Route::post('/users/{id}/update',[UserController::class, 'update'])->name('users.update');
    Route::get('/users/{id}/delete',[UserController::class, 'destroy'])->name('users.destroy');
 
+   /*|----- About -----|*/
+   Route::resource('abouts',AboutController::class);
    /*|----- Skill -----|*/
    Route::resource('skills',SkillController::class);
+
+   /*|----- Edu-Exp -----|*/
+   Route::resource('edu-exps',EduExpController::class);
 
    /*|----- Category -----|*/
    Route::resource('categories',CategoryController::class);
