@@ -83,23 +83,26 @@
 </nav>
 
 <ul class="blog-menu-inner">
+   @foreach($Posts as $post)
    <div class="blog-item">
       <div class="blog-content">
          <div class="post-image-warp">
-            <a href="" class="post-image-link">
-               <img src="{{ asset('images/projects/img/img-1.png') }}" class="post-thumbnail" alt="">
+            <a href="{{ route('welcome.show',$post->id) }}" class="post-image-link">
+               <img src="{{ asset('storage/posts/'.$post->photo) }}" class="post-thumbnail" alt="">
             </a>
-            <span class="post-tag">Web App</span>
+            <span class="post-tag">{{ $post->Category->title }}</span>
          </div>
          <h2 class="post-title">
-            <a href="">Responsive Profile Website</a>
+            <a href="{{ route('welcome.show',$post->id) }}">{{ $post->title }}</a>
          </h2>
          <div class="post-meta">
             <i class="fas fa-clock"></i>
-            March 18, 2020
+            {{ $post->created_at->format('F j, Y') }}
          </div>
       </div>
    </div>
+   @endforeach
+
    <div class="blog-item">
       <div class="blog-content">
          <div class="post-image-warp">
@@ -138,23 +141,5 @@
          </div>
       </div>
    </div>
-   <div class="blog-item">
-      <div class="blog-content">
-         <div class="post-image-warp">
-            <a href="" class="post-image-link">
-               <img src="{{ asset('images/projects/img/img-1.png') }}" class="post-thumbnail img-fluid" alt="">
-            </a>
-            <span class="post-tag">Web App</span>
-         </div>
-         <h2 class="post-title">
-            <a href="">Responsive Profile Website</a>
-         </h2>
-         <div class="post-meta">
-            <span class="post-date">
-               <i class="fas fa-clock"></i>
-               March 18, 2020
-            </span>
-         </div>
-      </div>
-   </div>
+
 </ul>
