@@ -7,6 +7,7 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>@yield('title','Personal Blog')</title>
 
+   <meta name="csrf-token" content="{{ csrf_token() }}">
    <!---------- BootStrap Min Css ---------->
    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
    <!---------- FontAweSome Css ---------->

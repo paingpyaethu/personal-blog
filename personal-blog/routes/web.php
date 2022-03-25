@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LikeDislikeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,8 +34,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','isAdmin']], function (){
    Route::post('/users/{id}/update',[UserController::class, 'update'])->name('users.update');
    Route::get('/users/{id}/delete',[UserController::class, 'destroy'])->name('users.destroy');
 
+   /*|----- Post -----|*/
+   Route::resource('posts',PostController::class);
+
    /*|----- About -----|*/
    Route::resource('abouts',AboutController::class);
+
    /*|----- Skill -----|*/
    Route::resource('skills',SkillController::class);
 
@@ -50,11 +56,16 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','isAdmin']], function (){
 // Front View
 Route::get('/',[WelcomeController::class,'index'])->name('welcome.index');
 Route::get('/about',[WelcomeController::class,'about'])->name('welcome.about');
+Route::get('/blogs/{id}/single-blog-post',[WelcomeController::class,'show'])->name('welcome.show');
+
+Route::post('/post/{postId}/like',[LikeDislikeController::class,'like'])->name('post.like');
+Route::post('/post/{postId}/dislike',[LikeDislikeController::class,'dislike'])->name('post.dislike');
+
 
 
 
 //Route::get('/blogs',[BlogController::class,'index'])->name('blogs.index');
-Route::get('/blogs/single-blog-post',[BlogController::class,'show'])->name('blogs.show');
+//Route::get('/blogs/single-blog-post',[BlogController::class,'show'])->name('blogs.show');
 
 //Route::get('/admin/dashboard', function () {
 //    return view('dashboard');

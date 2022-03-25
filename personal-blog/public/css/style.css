@@ -36,11 +36,21 @@ a {
     transition: 0.5s;
 }
 ul,li {
-    list-style: none;
+    /*list-style: none;*/
     padding: 0;
+}
+ol {
+    margin-bottom: 0;
 }
 p {
     margin: 0;
+}
+blockquote {
+    font-style: italic;
+    color: #888;
+    border-left: 5px solid #27ae60;
+    margin: 0;
+    padding: 10px 15px;
 }
 
 
@@ -361,6 +371,19 @@ p {
     color: #5c5c62;
 }
 
+.single-blog .post-labels .label-head {
+    background-color: var(--color-3);
+}
+.single-blog .post-labels .label-link {
+    background-color: #c3c1c1;
+    transition: 0.3s;
+}
+.single-blog .post-labels .label-link:hover {
+    background-color: var(--color-1);
+}
+.single-blog .post-labels .label-link a:hover {
+    color: #000000!important;
+}
 /*---------- ||  About - Skills Section || ----------*/
 .skills-heading-line::before {
     width: 100px;

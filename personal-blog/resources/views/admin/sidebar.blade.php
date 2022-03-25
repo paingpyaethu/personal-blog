@@ -23,6 +23,16 @@
 
             <li class="menu-title">Menu</li>
             <li class="menu-item">
+               <a href="{{ route('posts.index') }}"
+                  class="nav-menu-link {{ request()->is('admin/posts*') ? 'active' : '' }}">
+                  <span>
+                     <i class="fas fa-list-alt me-1"></i>
+                     Posts
+                  </span>
+               </a>
+            </li>
+
+            <li class="menu-item">
                <a href="{{ route('abouts.index') }}"
                   class="nav-menu-link {{ request()->is('admin/abouts*') ? 'active' : '' }}">
                   <span>

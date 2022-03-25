@@ -8,82 +8,128 @@
          <div class="card-body">
             <nav aria-label="breadcrumb">
                <ol class="breadcrumb justify-content-center mb-0">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item"><a href="#">Web App</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Responsive Profile Website</li>
+                  <li class="breadcrumb-item"><a href="{{ route('welcome.index') }}">Home</a></li>
+                  <li class="breadcrumb-item"><a href="#">{{ $postDetail->Category->title }}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ $postDetail->title }}</li>
                </ol>
             </nav>
          </div>
       </div>
 
       <h2 class="single-post-title">
-         Responsive Profile Website
+         {{ $postDetail->title }}
       </h2>
 
       <div class="single-post-img shadow-sm">
-         <img src="{{ asset('images/projects/img/img-1.png') }}" class="img-thumbnail" alt="">
+         <img src="{{ asset('storage/posts/'.$postDetail->photo) }}" class="img-thumbnail" alt="">
       </div>
+
       <div class="single-post-description">
          <p class="mb-3">
-            The project that I made from SWD design courses of MMS One Stop It Solutions.
-            This is fully responsive single page profile website design.
+            {!! $postDetail->description !!}
          </p>
          <div class="main-features">
-            <p class="fw-bold mb-2">
-               The main features of this website are:
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Responsive NavBar
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Scrollable NavBar with active class using <b>waypoint</b>
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Responsive home section - banner page
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Responsive about section
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Responsive services section
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Responsive prices section using <b>slick</b> - responsive carousel jQuery plugin
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Responsive contact us section
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Responsive footer section
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Responsive contact us section
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Website animation using <b>animate.css</b> - library with <b>wow.js</b> - JavaScript plugin
-            </p>
-            <p>
-               <i class="fas fa-check-circle text-success"></i>
-               Website Loading screen using <b>jQuery</b>
-            </p>
+               {!! $postDetail->features_used !!}
          </div>
          <div class="technologies mt-4">
-            <span class="fw-bold">Technologies Used - </span>
-            <span>
-               HTML, CSS, Bootstrap, jQuery
-            </span>
+           {!! $postDetail->technologies_used !!}
          </div>
       </div>
+
+   @if(Auth::check())
+      <div class="mt-3">
+         <button class="btn btn-sm btn-outline-success" @if($likeStatus) @if($likeStatus->type == 'like') disabled @endif @endif
+                 id="likeBtn" formaction="{{ route('post.like',$postDetail->id) }}">
+            <i class="fas fa-thumbs-up"></i>
+            Like <span class="like_count">{{ $like->count() }}</span>
+         </button>
+         <button class="btn btn-sm btn-danger" @if($likeStatus) @if($likeStatus->type == 'dislike') disabled @endif @endif
+         id="dislikeBtn" formaction="{{ route('post.dislike',$postDetail->id) }}">
+            <i class="fas fa-thumbs-down"></i>
+            Dislike <span class="dislike_count">{{ $dislike->count() }}</span>
+         </button>
+
+         <button type="button" class="btn btn-sm btn-outline-secondary">
+            <i class="fas fa-comment"></i>
+            Comment <span>2</span>
+         </button>
+      </div>
+      @endif
    </div>
 <!---------- Single Blog Posts ------------>
+@endsection
+
+@section('script')
+<script>
+   $('#likeBtn').on('click',function (e) {
+      e.preventDefault();
+
+      $.ajaxSetup({
+         headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+      });
+
+      let inputNames = $(this).serialize() // $(this) = $('#likeBtn')
+
+      $.post($(this).attr('formaction'), inputNames, function (response) {
+         if (response.status === 200 )
+         {
+            let _prevLikeCount = $('.like_count').text();
+            _prevLikeCount++;
+            $('.like_count').text(_prevLikeCount);
+            $('#likeBtn').attr("disabled","disabled");
+         }else if (response.updateStatus == 'success')
+         {
+            let _prevLikeCount = $('.like_count').text();
+            _prevLikeCount++;
+            $('.like_count').text(_prevLikeCount);
+            $('#likeBtn').attr("disabled","disabled");
+
+            let _prevDisLikeCount = $('.dislike_count').text();
+            _prevDisLikeCount--;
+            $('.dislike_count').text(_prevDisLikeCount);
+            $('#dislikeBtn').removeAttr("disabled","disabled");
+         }
+      });
+
+   })
+
+
+   $('#dislikeBtn').on('click',function (e) {
+      e.preventDefault();
+
+      $.ajaxSetup({
+         headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+      });
+
+      let inputNames = $(this).serialize() // $(this) = $('#likeBtn')
+
+      $.post($(this).attr('formaction'), inputNames, function (response) {
+         if (response.disLikeStatus === 200 )
+         {
+            let _prevDisLikeCount = $('.dislike_count').text();
+            _prevDisLikeCount++;
+            $('.dislike_count').text(_prevDisLikeCount);
+            $('#dislikeBtn').attr("disabled","disabled");
+         }else if (response.updateStatus == 'success')
+         {
+            let _prevDisLikeCount = $('.dislike_count').text();
+            _prevDisLikeCount++;
+            $('.dislike_count').text(_prevDisLikeCount);
+            $('#dislikeBtn').attr("disabled","disabled");
+
+            let _prevLikeCount = $('.like_count').text();
+            _prevLikeCount--;
+            $('.like_count').text(_prevLikeCount);
+            $('#likeBtn').removeAttr("disabled","disabled");
+         }
+      });
+
+   })
+
+
+</script>
 @endsection

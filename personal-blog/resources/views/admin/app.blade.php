@@ -41,13 +41,14 @@
 
 
 
-
-<!---------- BootStrap Bundle JS ---------->
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!---------- JQuery JS ---------->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+<!---------- BootStrap Bundle JS ---------->
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!---------- Main JS ---------->
 <script src="{{ asset('js/admin.main.js') }}"></script>
+
+
 @yield('admin_script')
 </body>
 </html>
