@@ -44,8 +44,8 @@
    </div>
 </div>
 
-{{--<!---------- Content Section ------------>--}}
-{{--@yield('content')--}}
+<!---------- Footer Section ---------->
+@include('front.footer')
 
 <!---------- BootStrap Bundle JS ---------->
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

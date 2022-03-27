@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -42,4 +44,6 @@ class UserController extends Controller
       User::where('id',$id)->delete();
       return redirect()->route('users.index')->with('success','You have successfully deleted.');
    }
+
+
 }

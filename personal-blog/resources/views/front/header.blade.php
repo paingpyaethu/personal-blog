@@ -30,40 +30,112 @@
          @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
                <div class="dropdown user-info">
                   <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                     <img src="{{ asset('images/about-me/my-img.png') }}" class="user-img shadow-sm me-2" alt="">
+                     <img src="{{ isset(\Illuminate\Support\Facades\Auth::user()->photo ) ? asset('storage/user-img/'.\Illuminate\Support\Facades\Auth::user()->photo) : asset('images/default_user.png') }}"
+                          class="user-img shadow-sm me-2" alt="">
                      {{ strtoupper(Auth::user()->name) }}
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <!-- Button trigger modal -->
+                     <button type="button" class="dropdown-item profile-btn"
+                             data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Profile
+                     </button>
                      <!-- Authentication -->
                      <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Go To Dashboard</a></li>
+                        <li><a class="dropdown-item logout-btn" href="{{ route('admin.dashboard') }}">Go To Dashboard</a></li>
                         <li>
-                           <a class="dropdown-item" href="{{ route('logout') }}"
+                           <a class="dropdown-item logout-btn" href="{{ route('logout') }}"
                               onclick="event.preventDefault();
-                         this.closest('form').submit();">
+                              this.closest('form').submit();">
                               Logout
                            </a>
                         </li>
                      </form>
                   </div>
                </div>
+
+               <!-- Modal -->
+               <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="staticBackdropLabel">Upload Photo</h5>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                           <div class="text-center">
+                              <img src="{{ isset(\Illuminate\Support\Facades\Auth::user()->photo ) ? asset('storage/user-img/'.\Illuminate\Support\Facades\Auth::user()->photo) : asset('images/default_user.png') }}"
+                                   alt="" class="me-2 w-50">
+                           </div>
+                           <hr>
+                           <form action="{{ route('user.photo-upload',\Illuminate\Support\Facades\Auth::user()->id) }}" method="post" class="d-flex align-items-end justify-content-between" enctype="multipart/form-data">
+                              @csrf
+                              <div class="">
+                                 <label for="Photo" class="form-label">Photo Upload</label>
+                                 <input type="file" class="form-control" name="photo">
+                              </div>
+                              <div class="">
+                                 <button type="submit" class="btn btn-primary">Upload</button>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             @else
                <div class="dropdown user-info">
                   <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                     <img src="{{ asset('images/about-me/my-img.png') }}" class="user-img shadow-sm me-2" alt="">
+                     <img src="{{ isset(\Illuminate\Support\Facades\Auth::user()->photo ) ? asset('storage/user-img/'.\Illuminate\Support\Facades\Auth::user()->photo) : asset('images/default_user.png') }}"
+                          alt="" class="user-img shadow-sm me-2">
                      {{ strtoupper(Auth::user()->name) }}
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <!-- Button trigger modal -->
+                     <button type="button" class="dropdown-item profile-btn"
+                             data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Profile
+                     </button>
                      <!-- Authentication -->
                      <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="dropdown-item logout-btn" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                          this.closest('form').submit();">
                            Logout
                         </a>
                      </form>
+                  </div>
+               </div>
+               <!-- Modal -->
+               <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="staticBackdropLabel">Update Photo</h5>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="text-center">
+                             <img src="{{ isset(\Illuminate\Support\Facades\Auth::user()->photo ) ? asset('storage/user-img/'.\Illuminate\Support\Facades\Auth::user()->photo) : asset('images/default_user.png') }}"
+                                  alt="" class="me-2 w-50">
+                          </div>
+                           <hr>
+                           <form action="{{ route('user.photo-upload',\Illuminate\Support\Facades\Auth::user()->id) }}" method="post" class="d-flex align-items-end justify-content-between" enctype="multipart/form-data">
+                              @csrf
+                              <div class="">
+                                 <label for="Photo" class="form-label">Photo Upload</label>
+                                 <input type="file" class="form-control" name="photo">
+                              </div>
+                              <div class="">
+                                 <button type="submit" class="btn btn-primary">Upload</button>
+                              </div>
+                           </form>
+                        </div>
+
+                     </div>
                   </div>
                </div>
          @endif

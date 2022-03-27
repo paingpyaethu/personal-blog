@@ -11,4 +11,8 @@
 
 $('#blogMenuToggle').on('click',function () {
    $('.blog-menu-inner').slideToggle();
+});
+
+$('#commentBtn').on('click',function () {
+   $('#commentBox').slideToggle();
 })
