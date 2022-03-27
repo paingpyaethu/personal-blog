@@ -7,6 +7,7 @@
     --color-1: #46c3db;
     --color-2: #f3f169;
     --color-3: #e928be;
+    --footer: #151414;
 }
 
 * {
@@ -237,7 +238,14 @@ blockquote {
 .user-info a:hover {
     color: rgba(255, 255, 255, 0.75);
 }
-.user-info .dropdown-item:hover {
+.user-info .profile-btn {
+    transition: 0.5s;
+}
+.user-info .profile-btn:hover {
+    background-color: #189130;
+    color: #e5e6e9;
+}
+.user-info .logout-btn:hover {
     background-color: #c1132d;
     color: var(--color-2);
 }
@@ -384,6 +392,15 @@ blockquote {
 .single-blog .post-labels .label-link a:hover {
     color: #000000!important;
 }
+.comment-area {
+    resize: none;
+    background-color: transparent;
+    border: 0;
+    margin-left: 2rem;
+}
+.form-control:focus{
+    box-shadow: none;
+}
 /*---------- ||  About - Skills Section || ----------*/
 .skills-heading-line::before {
     width: 100px;
@@ -524,3 +541,56 @@ blockquote {
     color: #5c5c62;
 }
 
+/*--------------
+ Footer Section
+---------------*/
+.footer {
+    padding-top: 1rem;
+    background: var(--footer);
+}
+
+.contact-box {
+
+}
+.contact-box-icon {
+    width: 4rem;
+}
+.contact-box-info {
+    padding: 0.4rem;
+}
+
+.contact-box-info-title {
+    color: #ffffff;
+    font-weight: 500;
+    transition: 0.3s;
+    font-size: 1.4rem;
+}
+.contact-box-info-title:hover {
+    color: #9926F0;
+}
+.contact-box-info-subtitle {
+    color: #adb5bd;
+}
+.footer-social-icon i {
+    font-size: 1.6rem;
+}
+.footer-social-icon i:hover{
+    color: #9926F0 !important;
+}
+
+/*-----------------
+ CopyRight Content
+------------------*/
+.footer-bottom {
+    background-color: var(--footer);
+}
+.footer-bottom .footer-bottom-copyright {
+    color: #adb5bd;
+}
+.footer-bottom .footer-bottom-copyright a {
+    color: #EEEAEA;
+}
+.footer-bottom .footer-bottom-copyright a:hover {
+    color: #9926F0;
+    text-decoration: underline;
+}

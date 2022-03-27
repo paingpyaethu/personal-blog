@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeDislikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
@@ -55,11 +56,17 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','isAdmin']], function (){
 
 // Front View
 Route::get('/',[WelcomeController::class,'index'])->name('welcome.index');
+
+Route::post('user-photo-upload',[WelcomeController::class,'photoUpload'])->name('user.photo-upload');
+
 Route::get('/about',[WelcomeController::class,'about'])->name('welcome.about');
-Route::get('/blogs/{id}/single-blog-post',[WelcomeController::class,'show'])->name('welcome.show');
+Route::get('/blogs/single-blog-post/{id}',[WelcomeController::class,'show'])->name('welcome.show');
 
 Route::post('/post/{postId}/like',[LikeDislikeController::class,'like'])->name('post.like');
 Route::post('/post/{postId}/dislike',[LikeDislikeController::class,'dislike'])->name('post.dislike');
+
+Route::post('save-comments',[CommentController::class,'saveComment'])->name('post.save_comment');
+//Route::get('/comments',[CommentController::class,'fetchComment'])->name('post.fetch_comment');
 
 
 
